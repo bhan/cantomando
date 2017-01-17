@@ -1,0 +1,55 @@
+<span>
+  cantomando welcomes you! Learn {{displayInfo[to].name}} pronunciations using your knowledge of {{displayInfo[from].name}}!</br>
+  Click on the cells to show the {{displayInfo[to].name}} pronunciations for a {{displayInfo[from].name}} sound.</br>
+  Click on the border cells to show an entire row, column, or table.</br>
+  <a ng-href="#/{{to}}/{{from}}">Switch to {{displayInfo[to]['name']}} to {{displayInfo[from]['name']}}</a>.</br>
+</span>
+<table class="outer">
+  <tr>
+    <th class="horiz" ng-click="tglShowAll()"></th>
+    <th class="horiz" ng-repeat="ini in initials"
+      ng-mousedown="mouseIniDown(ini)" ng-mousemove="mouseIniMove(ini)" ng-mouseup="mouseIniUp(ini)">
+      {{ini}}
+    </th>
+    <th class="horiz" ng-click="tglShowAll()"></th>
+  </tr>
+  <tr ng-repeat="fin in finals">
+    <th class="lvert"
+      ng-mousedown="mouseFinDown(fin)" ng-mousemove="mouseFinMove(fin)" ng-mouseup="mouseFinUp(fin)">
+      {{fin}}
+    </th>
+    <td ng-repeat="ini in initials" ng-class="{ 'valid': inData(ini,fin) }">
+      <span ng-if="inData(ini, fin)">
+        <span class="sound"
+          ng-mousedown="mouseDown(ini, fin)" ng-mousemove="mouseMove(ini, fin)" ng-mouseup="mouseUp(ini, fin)">
+          {{ini+fin}}
+        </span>
+        <table class="inner" ng-show="show(ini, fin)">
+          <tr ng-repeat="soundAndChars in data[ini+fin] | orderBy:'sound'">
+            <th class="inner">{{soundAndChars['sound']}}</th>
+            <td class="inner">
+              <span ng-repeat="char in soundAndChars['chars']"
+                class="inner"
+                ng-click="showTooltip(soundAndChars['sound'], char, ini+fin)">
+                {{char}}
+              </span>
+            </td>
+          </tr>
+        </table>
+        <span ng-show="show(ini, fin)" id="{{ ini+fin+'_info' }}"></span>
+      </span>
+    </td>
+    <th class="rvert"
+      ng-mousedown="mouseFinDown(fin)" ng-mousemove="mouseFinMove(fin)" ng-mouseup="mouseFinUp(fin)">
+      {{fin}}
+    </th>
+  </tr>
+  <tr>
+    <th class="horiz" ng-click="tglShowAll()"></th>
+    <th class="horiz" ng-repeat="ini in initials"
+      ng-mousedown="mouseIniDown(ini)" ng-mousemove="mouseIniMove(ini)" ng-mouseup="mouseIniUp(ini)">
+      {{ini}}
+    </th>
+    <th class="horiz" ng-click="tglShowAll()"></th>
+  </tr>
+</table>

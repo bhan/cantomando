@@ -1,0 +1,73 @@
+/* app css stylesheet */
+body {
+  padding-left: 10px;
+  padding-top: 10px;
+}
+table.outer {
+  border: 1px solid black;
+  background-color: cyan;
+}
+td {
+  background-color: lightcyan;
+}
+td.valid {
+  border: 1px dotted grey;
+  font-size: 16px;
+  text-align: center;
+  vertical-align: top;
+  padding-left: 2px;
+  padding-right: 2px;
+}
+th {
+  font-size: 16px;
+}
+th.lvert {
+  text-align: right;
+  border: 1px dotted grey;
+  vertical-align: top;
+}
+th.rvert {
+  text-align: left;
+  border: 1px dotted grey;
+  vertical-align: top;
+}
+th.horiz {
+  text-align: center;
+  border: 1px dotted grey;
+  vertical-align: top;
+}
+
+span.inner {
+  display: inline-block;
+}
+table.inner {
+  border: 0px;
+  text-align: left;
+  vertical-align: top;
+  width: 140px;
+}
+th.inner {
+  text-align: right;
+  vertical-align: top;
+  width: 60px;
+}
+td.inner {
+  width: 80;
+  word-wrap:break-word;
+}
+
+.sound {
+  display: block;
+}
+svg {
+  display: block;
+}
+.node {
+  border: dotted 1px white;
+  overflow: hidden;
+  position: absolute;
+  text-align: center;
+  vertical-align: middle;
+  word-wrap: break-word;
+  padding: 0px;
+}
